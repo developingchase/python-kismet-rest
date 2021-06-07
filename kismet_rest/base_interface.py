@@ -50,7 +50,7 @@ class BaseInterface(object):
     permitted_kwargs = ["host_uri", "username", "password",
                         "session_cache", "debug"]
 
-    def __init__(self, host_uri='http://127.0.0.1:2501', **kwargs):
+    def __init__(self, host_uri='http://127.0.0.1:2501', sessioncache_path='~/.pykismet_session', **kwargs):
         """Initialize using legacy args or (new style) kwargs."""
         self.logger = Logger()
         self.max_retries = 5
@@ -58,7 +58,7 @@ class BaseInterface(object):
         self.host_uri = host_uri
         self.username = None
         self.password = "nopass"
-        self.sessioncache_path = '~/.pykismet_session_' + base64.b64encode(str.encode(host_uri)).decode("utf-8").strip("=")
+        #self.sessioncache_path = '~/.pykismet_session_' + base64.b64encode(str.encode(host_uri)).decode("utf-8").strip("=")
         self.session_cache = self.sessioncache_path
         self.debug = False
         # Set the default path for storing sessions
